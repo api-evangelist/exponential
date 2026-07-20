@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/yo-risk-graph/agent-api
+notes: >-
+  YO's HTTP surfaces do not use API keys, OAuth, or OIDC. The Protocol read
+  API (api.yo.xyz) and the public Vault Exposure endpoint (risk.yo.xyz) are
+  fully unauthenticated. The Risk Graph Agent API (risk.yo.xyz/api/v1/agent/*)
+  is not authenticated with a credential either — access is gated by per-call
+  payment via the x402 v2 micropayment protocol: an unpaid request returns 402
+  with an invoice, the caller signs the amount and retries with an X-PAYMENT
+  header, settled on-chain via EIP-3009 transferWithAuthorization in USDC on
+  Base. On-chain writes (deposit/redeem) are authorized by the user's own
+  wallet signature through the yoGateway, not by an API credential.
+summary:
+  types: [none, payment-gated]
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+  - name: publicRead
+    type: none
+    applies_to:
+      - openapi/exponential-protocol-openapi.yml
+      - "risk.yo.xyz /api/v1/public/vault/**"
+    description: No API key required.
+  - name: x402Payment
+    type: payment
+    scheme: x402
+    header: X-PAYMENT
+    challenge_status: 402
+    network: eip155:8453 (Base mainnet)
+    asset: "USDC 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    settlement: EIP-3009 transferWithAuthorization via Coinbase CDP
+    applies_to:
+      - "risk.yo.xyz /api/v1/agent/**"
+    description: Per-call payment gate; no onboarding or credential.
+  - name: walletSignature
+    type: onchain
+    applies_to:
+      - yoGateway 0xF1EeE0957267b1A474323Ff9CfF7719E964969FA
+    description: Deposits and redeems are authorized by the user's EVM wallet signature via the yoGateway.
