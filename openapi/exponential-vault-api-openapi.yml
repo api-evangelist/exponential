@@ -1,0 +1,211 @@
+openapi: 3.0.0
+info:
+  title: Yo Protocol Agent Vault API
+  version: '1.0'
+  description: 'Public read API for the YO Protocol (by Exponential.fi). Fetch historical and current protocol- and address-level data for yoVaults: current snapshot (TVL, yield, underlying pools, allocation), pending redeem requests, historical yield and TVL time series, per-user deposit/withdraw history, per-user pending redemptions, and per-user P&L. No API key required. Endpoints are assembled verbatim from the per-endpoint OpenAPI fragments published on the docs API reference page.'
+servers:
+- url: https://api.yo.xyz
+  description: Production
+tags:
+- name: Vault
+paths:
+  /api/v1/vault/{network}/{vaultAddress}:
+    get:
+      operationId: VaultController_getVault_v1
+      summary: Get a snapshot of the current TVL, yield, underlying pools and allocation of a protocol vault.
+      tags:
+      - Vault
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: network
+        required: true
+        in: path
+        schema:
+          enum:
+          - base
+          - ethereum
+          - unichain
+          - arbitrum
+          - tac
+          - plasma
+          - hyperevm
+          type: string
+      responses:
+        '200':
+          description: ''
+  /api/v1/vault/pending-redeems/{network}/{vaultAddress}:
+    get:
+      operationId: VaultController_getTotalPendingRedeems_v1
+      summary: Check the status of pending redeem requests for a given YO vault on a given blockchain.
+      tags:
+      - Vault
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: network
+        required: true
+        in: path
+        schema:
+          enum:
+          - base
+          - ethereum
+          - unichain
+          - arbitrum
+          - tac
+          - plasma
+          - hyperevm
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ApiResponseDto'
+                - properties:
+                    data:
+                      $ref: '#/components/schemas/AmountDto'
+  /api/v1/vault/yield/timeseries/{network}/{vaultAddress}:
+    get:
+      operationId: VaultController_getYieldTimeseries_v1
+      summary: Fetch the historical yield of a specific YO vault.
+      tags:
+      - Vault
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: network
+        required: true
+        in: path
+        schema:
+          enum:
+          - base
+          - ethereum
+          - unichain
+          - arbitrum
+          - tac
+          - plasma
+          - hyperevm
+          type: string
+      responses:
+        '200':
+          description: ''
+  /api/v1/vault/tvl/timeseries/{network}/{vaultAddress}:
+    get:
+      operationId: VaultController_getTvlTimeseries_v1
+      summary: Fetch the historical TVL of a specific YO vault.
+      tags:
+      - Vault
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: network
+        required: true
+        in: path
+        schema:
+          enum:
+          - base
+          - ethereum
+          - unichain
+          - arbitrum
+          - tac
+          - plasma
+          - hyperevm
+          type: string
+      responses:
+        '200':
+          description: ''
+  /api/v1/vault/pending-redeems/{network}/{vaultAddress}/{userAddress}:
+    get:
+      operationId: VaultController_getPendingRedeemsForUser_v1
+      summary: Fetch the pending redemptions for a specific user on a specific vault.
+      tags:
+      - Vault
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: network
+        required: true
+        in: path
+        schema:
+          enum:
+          - base
+          - ethereum
+          - unichain
+          - arbitrum
+          - tac
+          - plasma
+          - hyperevm
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ApiResponseDto'
+                - properties:
+                    data:
+                      $ref: '#/components/schemas/PendingRedeemsForUserResponseDto'
+components:
+  schemas:
+    ApiResponseDto:
+      type: object
+      properties:
+        data:
+          type: object
+          description: The response data
+        message:
+          type: string
+          description: Message describing the response
+        statusCode:
+          type: number
+          description: HTTP status code of the response
+      required:
+      - data
+      - message
+      - statusCode
+    PendingRedeemsForUserResponseDto:
+      type: object
+      properties:
+        assets:
+          $ref: '#/components/schemas/AmountDto'
+        shares:
+          $ref: '#/components/schemas/AmountDto'
+      required:
+      - assets
+      - shares
+    AmountDto:
+      type: object
+      properties:
+        raw:
+          format: int64
+          type: integer
+        formatted:
+          type: string
+      required:
+      - raw
+      - formatted

@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Yo Protocol Agent Performance API
+  version: '1.0'
+  description: 'Public read API for the YO Protocol (by Exponential.fi). Fetch historical and current protocol- and address-level data for yoVaults: current snapshot (TVL, yield, underlying pools, allocation), pending redeem requests, historical yield and TVL time series, per-user deposit/withdraw history, per-user pending redemptions, and per-user P&L. No API key required. Endpoints are assembled verbatim from the per-endpoint OpenAPI fragments published on the docs API reference page.'
+servers:
+- url: https://api.yo.xyz
+  description: Production
+tags:
+- name: Performance
+paths:
+  /api/v1/performance/user/{network}/{vaultAddress}/{userAddress}:
+    get:
+      operationId: PerformanceController_getUserPerformance_v1
+      summary: Fetch the P&L of a user in a specific vault.
+      tags:
+      - Performance
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userAddress
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: network
+        required: true
+        in: path
+        schema:
+          enum:
+          - base
+          - ethereum
+          - unichain
+          - arbitrum
+          - tac
+          - plasma
+          - hyperevm
+          type: string
+      responses:
+        '200':
+          description: ''

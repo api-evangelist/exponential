@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Yo Protocol Agent Public API
+  version: '1.0'
+  description: 'Public read API for the YO Protocol (by Exponential.fi). Fetch historical and current protocol- and address-level data for yoVaults: current snapshot (TVL, yield, underlying pools, allocation), pending redeem requests, historical yield and TVL time series, per-user deposit/withdraw history, per-user pending redemptions, and per-user P&L. No API key required. Endpoints are assembled verbatim from the per-endpoint OpenAPI fragments published on the docs API reference page.'
+servers:
+- url: https://api.yo.xyz
+  description: Production
+tags:
+- name: Public
+paths:
+  /api/v1/public/vault/{chain}/{vaultAddress}/exposure:
+    get:
+      operationId: getVaultExposure
+      summary: Current collateral exposure of a vault (underlying assets, USD value, share of allocation).
+      description: No API key required. Works with most Morpho vaults today.
+      tags:
+      - Public
+      parameters:
+      - name: chain
+        in: path
+        required: true
+        description: Chain slug, e.g. ethereum
+        schema:
+          type: string
+      - name: vaultAddress
+        in: path
+        required: true
+        description: Vault contract address
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Vault exposure breakdown
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VaultExposureResponse'
+components:
+  schemas:
+    ExposureEntry:
+      type: object
+      properties:
+        assetId:
+          type: string
+        symbol:
+          type: string
+        chain:
+          type: string
+        exposureUsd:
+          type: string
+        exposurePct:
+          type: string
+    VaultExposureResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            vault:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                tvlUsd:
+                  type: string
+            allocatedUsd:
+              type: string
+            underlying:
+              type: array
+              items:
+                $ref: '#/components/schemas/ExposureEntry'
+            collateral:
+              type: array
+              items:
+                $ref: '#/components/schemas/ExposureEntry'
+            uncollateralizedUsd:
+              type: string
+            uncollateralizedPct:
+              type: string
+        message:
+          type: string
+        statusCode:
+          type: number
