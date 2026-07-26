@@ -1,0 +1,48 @@
+arazzo: 1.0.1
+info:
+  title: YO Risk Graph triage
+  version: 1.0.0
+  summary: >-
+    Learn the graph schema, find an entity, read its risk grade and rationale,
+    then map its 1-hop dependencies. Every step settles an x402 micropayment.
+sourceDescriptions:
+  - name: riskgraph
+    url: ../openapi/exponential-risk-graph-openapi.yml
+    type: openapi
+workflows:
+  - workflowId: riskGraphTriage
+    summary: schema -> search -> node grade -> dependencies for a pool/asset/protocol.
+    inputs:
+      type: object
+      properties:
+        q:
+          type: string
+          description: Asset address or protocol/asset name to search for.
+        nodeId:
+          type: string
+          description: Node id to grade and expand (from a prior search hit).
+    steps:
+      - stepId: schema
+        operationId: agentSchema
+      - stepId: search
+        operationId: agentSearch
+        parameters:
+          - name: q
+            in: query
+            value: $inputs.q
+      - stepId: node
+        operationId: agentNode
+        parameters:
+          - name: nodeId
+            in: path
+            value: $inputs.nodeId
+        outputs:
+          riskTier: $response.body#/data/_riskTier
+      - stepId: dependencies
+        operationId: agentDependencies
+        parameters:
+          - name: nodeId
+            in: query
+            value: $inputs.nodeId
+    outputs:
+      riskTier: $steps.node.outputs.riskTier

@@ -1,0 +1,56 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/integrations/integration-guides/sdk/react
+name: YO Kit (React)
+description: >-
+  Client-side React integration surface for embedding YO vault flows into a
+  dApp. Ships a YoKitProvider context plus a large library of wagmi/TanStack
+  Query hooks for reading vault state and building deposit/redeem/approve
+  transactions. Distinct from the server-side SDK — this is the embeddable
+  front-end layer.
+loader:
+  package: "@yo-protocol/react"
+  peers: [react, react-dom, wagmi, viem, "@tanstack/react-query"]
+families:
+  - name: Provider
+    components:
+      - YoKitProvider
+      - useYoClient
+  - name: Vault reads
+    components:
+      - useVault
+      - useVaults
+      - useVaultSnapshot
+      - useVaultHistory
+      - useVaultAllocations
+      - useVaultStats
+      - useTotalTvl
+      - usePrices
+      - useSharePriceHistory
+  - name: User position
+    components:
+      - useUserPosition
+      - useUserPositions
+      - useUserBalance
+      - useShareBalance
+      - useTokenBalance
+      - useUserHistory
+      - useUserPerformance
+      - usePendingRedemptions
+  - name: Actions
+    components:
+      - useDeposit
+      - useRedeem
+      - useApprove
+      - useAllowance
+      - usePreviewDeposit
+      - usePreviewRedeem
+  - name: Rewards
+    components:
+      - useUserRewards
+      - useAllTimeRewards
+      - useWeeklyRewards
+      - useMerklRewards
+      - useMerklCampaigns
+      - useClaimMerklRewards
+      - useLeaderboard

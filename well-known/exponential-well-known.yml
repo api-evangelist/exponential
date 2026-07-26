@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+notes: >-
+  Probed the /.well-known/ discovery surface on every YO host. The marketing
+  hosts (exponential.fi, yo.xyz, app.yo.xyz) sit behind a Vercel bot challenge
+  and return 429 to automated probes; the API/docs hosts return 404 for all
+  well-known paths. No security.txt, OIDC, oauth-authorization-server,
+  api-catalog, or ai-plugin.json document was published at the time of probe.
+hosts:
+  - host: https://exponential.fi
+    documents:
+      - { path: /.well-known/security.txt, status: 429 }
+      - { path: /.well-known/openid-configuration, status: 429 }
+      - { path: /.well-known/oauth-authorization-server, status: 429 }
+      - { path: /.well-known/api-catalog, status: 429 }
+      - { path: /.well-known/ai-plugin.json, status: 429 }
+  - host: https://yo.xyz
+    documents:
+      - { path: /.well-known/security.txt, status: 429 }
+      - { path: /.well-known/openid-configuration, status: 429 }
+      - { path: /.well-known/oauth-authorization-server, status: 429 }
+      - { path: /.well-known/api-catalog, status: 429 }
+      - { path: /.well-known/ai-plugin.json, status: 429 }
+  - host: https://api.yo.xyz
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+  - host: https://risk.yo.xyz
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+  - host: https://docs.yo.xyz
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }

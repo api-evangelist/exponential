@@ -1,28 +1,175 @@
 aid: exponential
 name: Exponential
-description: 'Exponential is a company surfaced as a portfolio company of norwest-venture-partners, paradigm
-  and added to the API Evangelist network as a stub for enrichment. Sector: unknown. This profile is a
-  lead awaiting the enrichment pipeline.'
+description: >-
+  Exponential.fi is a DeFi company (backed by Paradigm and Norwest Venture
+  Partners) behind YO Protocol — a cross-chain "Yield Optimizer" that
+  automatically allocates deposits across the best-performing liquidity pools
+  on multiple blockchains to deliver the highest risk-adjusted yield, using
+  Exponential.fi's own Risk Ratings to balance risk and reward. yoVaults are
+  ERC-4626 tokenized vaults (yoUSD, yoETH, yoBTC, yoEUR, yoGOLD, yoSOL and
+  more) with ERC-7540-style async redemption, all routed through the single
+  yoGateway entry point. The developer surface spans a public read API
+  (api.yo.xyz), a first-party TypeScript SDK/React kit/CLI (@yo-protocol/*),
+  official agent skills and a Base MCP plugin, and the YO Risk Graph — a paid,
+  agent-facing DeFi risk-intelligence API monetized per-call via the x402 USDC
+  micropayment standard on Base.
 url: https://raw.githubusercontent.com/api-evangelist/exponential/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - norwest-venture-partners
 - paradigm
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-- Unknown
-apis: []
+- DeFi
+- Decentralized Finance
+- Yield
+- Yield Optimizer
+- Vaults
+- ERC-4626
+- Cross-chain
+- Blockchain
+- Crypto
+- Risk
+- Risk Ratings
+- Agents
+- x402
+- Web3
+image: https://raw.githubusercontent.com/api-evangelist/exponential/refs/heads/main/apis.yml
+apis:
+- aid: exponential:exponential-agent-api
+  name: Exponential Agent API
+  description: The Agent API from Exponential — 4 operation(s) for agent.
+  humanURL: https://docs.yo.xyz/integrations/api
+  baseURL: https://api.yo.xyz
+  tags:
+  - Agent
+  properties:
+  - type: OpenAPI
+    url: openapi/exponential-agent-api-openapi.yml
+- aid: exponential:exponential-history-api
+  name: Exponential History API
+  description: The History API from Exponential — 1 operation(s) for history.
+  humanURL: https://docs.yo.xyz/integrations/api
+  baseURL: https://api.yo.xyz
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/exponential-history-api-openapi.yml
+- aid: exponential:exponential-performance-api
+  name: Exponential Performance API
+  description: The Performance API from Exponential — 1 operation(s) for performance.
+  humanURL: https://docs.yo.xyz/integrations/api
+  baseURL: https://api.yo.xyz
+  tags:
+  - Performance
+  properties:
+  - type: OpenAPI
+    url: openapi/exponential-performance-api-openapi.yml
+- aid: exponential:exponential-public-api
+  name: Exponential Public API
+  description: The Public API from Exponential — 1 operation(s) for public.
+  humanURL: https://docs.yo.xyz/integrations/api
+  baseURL: https://api.yo.xyz
+  tags:
+  - Public
+  properties:
+  - type: OpenAPI
+    url: openapi/exponential-public-api-openapi.yml
+- aid: exponential:exponential-vault-api
+  name: Exponential Vault API
+  description: The Vault API from Exponential — 5 operation(s) for vault.
+  humanURL: https://docs.yo.xyz/integrations/api
+  baseURL: https://api.yo.xyz
+  tags:
+  - Vault
+  properties:
+  - type: OpenAPI
+    url: openapi/exponential-vault-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/exponential-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/exponential-agentic-access.yml
 - type: Website
   url: https://exponential.fi
+- type: DeveloperPortal
+  url: https://docs.yo.xyz
+- type: Documentation
+  url: https://docs.yo.xyz
+- type: APIReference
+  url: https://docs.yo.xyz/integrations/api
+- type: GettingStarted
+  url: https://docs.yo.xyz/integrations/integration-guides/sdk/getting-started/quickstart
+- type: Blog
+  url: https://docs.yo.xyz/welcome-to-yo/what-is-yo
+- type: GitHubOrganization
+  url: https://github.com/yoprotocol
+- type: Security
+  url: https://docs.yo.xyz/protocol/security-framework
+- type: Pricing
+  url: https://docs.yo.xyz/yo-risk-graph/agent-api
+- type: Packages
+  url: packages/exponential-packages.yml
+- type: SDKs
+  url: packages/exponential-packages.yml
+- type: CLI
+  url: cli/exponential-cli.yml
+- type: Components
+  url: components/exponential-components.yml
+- type: MCPServer
+  url: mcp/exponential-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/exponential-llms.txt
+- type: WellKnown
+  url: well-known/exponential-well-known.yml
+- type: Authentication
+  url: authentication/exponential-authentication.yml
+- type: Conventions
+  url: conventions/exponential-conventions.yml
+- type: ErrorCatalog
+  url: errors/exponential-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/exponential-lifecycle.yml
+- type: Conformance
+  url: conformance/exponential-conformance.yml
+- type: DataModel
+  url: data-model/exponential-data-model.yml
+- type: FinOps
+  url: finops/exponential-finops.yml
+- type: Arazzo
+  name: YO vault snapshot and user position
+  url: arazzo/exponential-vault-snapshot.yml
+- type: Arazzo
+  name: YO Risk Graph triage
+  url: arazzo/exponential-risk-graph-triage.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

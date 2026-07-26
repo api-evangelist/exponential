@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/integrations/api
+notes: >-
+  YO versions its HTTP APIs in the URI path (/api/v1). No public status page,
+  SLA, or formal deprecation policy (Sunset/Deprecation headers) was found at
+  probe time (status.yo.xyz / trust.yo.xyz did not resolve). Protocol
+  robustness is governed on-chain by a 48-hour upgrade timelock and an
+  emergency pauser rather than an API deprecation policy.
+versioning:
+  scheme: uri-path
+  current: v1
+  path_prefix: /api/v1
+onchain_governance:
+  upgrade_timelock: 48h (YO Timelock 0x38cE5e45D0f5d03E83863bb19B3b1A272C186F48)
+  emergency_pauser: 0xaa06ac3cb11b84c1d1094818341b4796c2b43c71
+  auto_pause: Protocol auto-pauses when asset valuations deviate significantly
+deprecation:
+  policy_url: null
+  sunset_header: false
+sla:
+  url: null
+status_page: null
+deprecated_operations: []

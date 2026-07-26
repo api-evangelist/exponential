@@ -1,0 +1,165 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/yo-risk-graph/agent-api
+openapi: 3.0.0
+info:
+  title: YO Risk Graph API
+  version: '1.0'
+  description: >-
+    The YO Risk Graph (Exponential.fi Risk Ratings) exposed as HTTP APIs.
+    Two surfaces: a free public Vault Exposure endpoint that returns a vault's
+    current collateral exposure, and a paid Agent API for full risk grading
+    and dependency mapping across pools, assets, protocols and chains. The
+    Agent API is monetized per-call via the x402 micropayment standard (v2)
+    in USDC on Base mainnet (EIP-3009 transferWithAuthorization via Coinbase
+    CDP; payer pays no gas). Paths and parameters are captured from the
+    published docs; per-call prices are recorded as x-x402-price extensions.
+servers:
+  - url: https://risk.yo.xyz
+    description: Production
+tags:
+  - name: Public
+  - name: Agent
+paths:
+  /api/v1/public/vault/{chain}/{vaultAddress}/exposure:
+    get:
+      operationId: getVaultExposure
+      summary: Current collateral exposure of a vault (underlying assets, USD value, share of allocation).
+      description: No API key required. Works with most Morpho vaults today.
+      tags: [Public]
+      parameters:
+        - name: chain
+          in: path
+          required: true
+          description: Chain slug, e.g. ethereum
+          schema: { type: string }
+        - name: vaultAddress
+          in: path
+          required: true
+          description: Vault contract address
+          schema: { type: string }
+      responses:
+        '200':
+          description: Vault exposure breakdown
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VaultExposureResponse'
+  /api/v1/agent/schema:
+    get:
+      operationId: agentSchema
+      summary: Data model — node types, edge types, grade letters. Call this first.
+      tags: [Agent]
+      x-x402-price: '$0.001'
+      responses:
+        '200':
+          description: Graph schema
+        '402':
+          description: Payment Required — x402 invoice in PAYMENT-REQUIRED header
+  /api/v1/agent/search:
+    get:
+      operationId: agentSearch
+      summary: Search pools/assets/protocols/chains. Lean teaser per hit (no grade). Capped at 10 results.
+      description: Always settles, even on a zero-result query, since the scan itself is the billable work.
+      tags: [Agent]
+      x-x402-price: '$0.001'
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Asset address or protocol/asset name. No wildcards.
+          schema: { type: string }
+        - name: label
+          in: query
+          required: false
+          description: Restrict to Pool, Asset, Protocol, or Chain
+          schema:
+            type: string
+            enum: [Pool, Asset, Protocol, Chain]
+        - name: limit
+          in: query
+          required: false
+          description: 1-10, default 10
+          schema: { type: integer, minimum: 1, maximum: 10, default: 10 }
+        - name: tvl
+          in: query
+          required: false
+          description: Comparator, e.g. ">1000000"
+          schema: { type: string }
+        - name: grade
+          in: query
+          required: false
+          description: Comparator over A-F, e.g. "<=B"
+          schema: { type: string }
+      responses:
+        '200':
+          description: Up to 10 teaser hits
+        '402':
+          description: Payment Required — x402 invoice
+  /api/v1/agent/node/{nodeId}:
+    get:
+      operationId: agentNode
+      summary: Full properties + grade (_riskTier) + riskBreakdown (rationale as Q&A pairs).
+      tags: [Agent]
+      x-x402-price: '$0.05'
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Node with grade and rationale
+        '402':
+          description: Payment Required — x402 invoice
+        '404':
+          description: Not indexed (free)
+  /api/v1/agent/dependencies:
+    get:
+      operationId: agentDependencies
+      summary: A pool's direct (1-hop) dependencies — edges and neighboring nodes, each stamped with lastUpdatedAt.
+      tags: [Agent]
+      x-x402-price: '$1.00'
+      parameters:
+        - name: nodeId
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: 1-hop dependency subgraph
+        '402':
+          description: Payment Required — x402 invoice
+components:
+  schemas:
+    VaultExposureResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            vault:
+              type: object
+              properties:
+                id: { type: string }
+                name: { type: string }
+                tvlUsd: { type: string }
+            allocatedUsd: { type: string }
+            underlying:
+              type: array
+              items: { $ref: '#/components/schemas/ExposureEntry' }
+            collateral:
+              type: array
+              items: { $ref: '#/components/schemas/ExposureEntry' }
+            uncollateralizedUsd: { type: string }
+            uncollateralizedPct: { type: string }
+        message: { type: string }
+        statusCode: { type: number }
+    ExposureEntry:
+      type: object
+      properties:
+        assetId: { type: string }
+        symbol: { type: string }
+        chain: { type: string }
+        exposureUsd: { type: string }
+        exposurePct: { type: string }

@@ -1,0 +1,52 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/exponential-protocol-openapi.yml
+notes: >-
+  Entity-relationship graph derived from the Protocol API schemas + path
+  parameters and the published contract-address registry. Two connected
+  domains: the vault/off-chain-data domain (Protocol API) and the Risk Graph
+  domain (Agent API nodes/edges). Enriched with on-chain identifiers from
+  docs.yo.xyz/protocol/contract-addresses.
+entities:
+  - name: Network
+    description: Supported blockchain (path enum)
+    values: [base, ethereum, unichain, arbitrum, tac, plasma, hyperevm, solana, katana, x-layer]
+  - name: Vault
+    description: A yoVault — ERC-4626 tokenized yield vault
+    id: vaultAddress (contract address)
+    instances: [yoETH, yoUSD, yoUSDT, "yoUSD Edge", yoGOLD, yoBTC, yoEUR, yoSOL]
+  - name: VaultToken
+    description: ERC-20 share token minted by a vault
+  - name: UnderlyingAsset
+    description: Base asset a vault accepts/holds (e.g. USDC, WETH, cbBTC, XAUt, SOL)
+  - name: User
+    description: An address holding a vault position
+    id: userAddress
+  - name: PendingRedeem
+    description: An async redemption request (assets + shares as AmountDto)
+  - name: YieldTimeseries
+    description: Historical yield points for a vault
+  - name: TvlTimeseries
+    description: Historical TVL points for a vault
+  - name: Performance
+    description: Per-user P&L in a vault
+  - name: RiskNode
+    description: Risk Graph node — Pool, Asset, Protocol, or Chain, graded A-F (_riskTier)
+  - name: RiskEdge
+    description: Directed dependency between risk nodes (1-hop dependencies)
+relationships:
+  - { from: Vault, to: Network, type: belongs_to, via: network }
+  - { from: Vault, to: VaultToken, type: has_one, via: vaultAddress }
+  - { from: Vault, to: UnderlyingAsset, type: has_many, via: underlying }
+  - { from: User, to: Vault, type: has_many, via: position }
+  - { from: PendingRedeem, to: User, type: belongs_to, via: userAddress }
+  - { from: PendingRedeem, to: Vault, type: belongs_to, via: vaultAddress }
+  - { from: YieldTimeseries, to: Vault, type: belongs_to, via: vaultAddress }
+  - { from: TvlTimeseries, to: Vault, type: belongs_to, via: vaultAddress }
+  - { from: Performance, to: User, type: belongs_to, via: userAddress }
+  - { from: RiskNode, to: RiskNode, type: has_many, via: dependencies }
+  - { from: RiskEdge, to: RiskNode, type: belongs_to, via: nodeId }
+gateway:
+  name: yoGateway
+  address: "0xF1EeE0957267b1A474323Ff9CfF7719E964969FA"
+  role: Single entry point into all yoVaults (deposits + async redeems)

@@ -1,0 +1,22 @@
+{
+  "provider": "exponential",
+  "sources": [
+    "exponential-agent-api-openapi.yml",
+    "exponential-history-api-openapi.yml",
+    "exponential-performance-api-openapi.yml",
+    "exponential-public-api-openapi.yml",
+    "exponential-vault-api-openapi.yml"
+  ],
+  "outputs": [
+    "exponential-agent-api-openapi.yml",
+    "exponential-history-api-openapi.yml",
+    "exponential-performance-api-openapi.yml",
+    "exponential-public-api-openapi.yml",
+    "exponential-vault-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

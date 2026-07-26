@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/yoprotocol/yo-protocol-skills
+notes: >-
+  Official YO Protocol agent skills, published by yoprotocol and saved
+  verbatim. Installable with `npx skills add yoprotocol/yo-protocol-skills
+  --all`. These are provider-authored Claude/agent skills, not generated.
+skills:
+  - file: exponential-risk-graph.md
+    name: risk-graph
+    description: Use the paid Risk Graph agent API (/api/v1/agent/*) over x402 USDC micropayments on Base.
+    api: openapi/exponential-risk-graph-openapi.yml
+    operations: [agentSchema, agentSearch, agentNode, agentDependencies]
+  - file: exponential-yo-base-mcp-plugin.md
+    name: yo-base-mcp-plugin
+    description: Base MCP plugin — view vaults, positions, deposit, redeem (instant/async), claim Merkl rewards.
+    api: openapi/exponential-protocol-openapi.yml
+    operations: [VaultController_getVault_v1, HistoryController_getAggregatedHistory_v1, VaultController_getPendingRedeemsForUser_v1]
+  - file: exponential-yo-protocol-sdk.md
+    name: yo-protocol-sdk
+    description: Build with the @yo-protocol/core TypeScript SDK — client, vault reads, actions, API client.
+    api: openapi/exponential-protocol-openapi.yml
+    operations: [VaultController_getVault_v1, VaultController_getYieldTimeseries_v1, VaultController_getTvlTimeseries_v1]
+  - file: exponential-yo-protocol-cli.md
+    name: yo-protocol-cli
+    description: Drive the `yo` CLI — read vaults/positions/rewards and prepare deposit/redeem/approve transactions.
+    api: openapi/exponential-protocol-openapi.yml
+    operations: [VaultController_getVault_v1, HistoryController_getAggregatedHistory_v1, PerformanceController_getUserPerformance_v1]
+  - file: exponential-yo-protocol-react.md
+    name: yo-protocol-react
+    description: Build React dApps with @yo-protocol/react hooks (YoKitProvider + wagmi/TanStack Query).
+    api: openapi/exponential-protocol-openapi.yml
+    operations: [VaultController_getVault_v1, VaultController_getTotalPendingRedeems_v1]

@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Yo Protocol API
+  version: 1.0.0
+extends: openapi/exponential-protocol-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: exponential
+      x-apievangelist-product: YO Protocol (Yield Optimizer)
+      x-apievangelist-auth: none (public read)
+      x-apievangelist-response-envelope: "{ data, message, statusCode }"
+      x-apievangelist-related-apis:
+        - openapi/exponential-risk-graph-openapi.yml
+  - target: $.tags[?(@.name=='Vault')]
+    update:
+      description: Vault snapshots, yield/TVL time series, and pending redeem status.
+  - target: $.tags[?(@.name=='History')]
+    update:
+      description: Per-address deposit and withdrawal history.
+  - target: $.tags[?(@.name=='Performance')]
+    update:
+      description: Per-address P&L in a vault.

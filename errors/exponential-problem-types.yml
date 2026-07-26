@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/yo-risk-graph/agent-api
+format: envelope
+notes: >-
+  YO does not publish RFC 9457 problem+json. Errors surface through the
+  standard response envelope ({ data, message, statusCode }) and, on the Risk
+  Graph Agent API, through x402 payment status codes. Derived from the
+  documented HTTP status semantics of the Agent API plus the Protocol API 400
+  observed on a malformed vault probe.
+envelope:
+  shape: "{ data, message, statusCode }"
+problems:
+  - status: 400
+    title: Bad Request
+    detail: Malformed path/query (e.g. invalid vault or network); returned free on the Agent API.
+    billed: false
+    source_operation: openapi/exponential-protocol-openapi.yml#VaultController_getVault_v1
+  - status: 402
+    title: Payment Required
+    detail: x402 invoice returned in the PAYMENT-REQUIRED header. Sign the amount and retry with X-PAYMENT.
+    billed: false
+    source_operation: openapi/exponential-risk-graph-openapi.yml#agentSchema
+  - status: 403
+    title: Forbidden
+    detail: Payment invalid or unauthorized. Returned free.
+    billed: false
+  - status: 404
+    title: Not Found
+    detail: Node/entity not indexed in the risk graph. Point lookups (/node, /dependencies) are free to probe.
+    billed: false
+    source_operation: openapi/exponential-risk-graph-openapi.yml#agentNode
+  - status: 429
+    title: Too Many Requests
+    detail: Rate limit exceeded (~10 req/s per payer on the Agent API). Returned free.
+    billed: false
+  - status: 500
+    title: Internal Server Error
+    detail: Server-side failure. 5xx responses are never charged.
+    billed: false

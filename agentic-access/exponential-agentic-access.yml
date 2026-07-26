@@ -1,0 +1,134 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/exponential-protocol-openapi.yml, openapi/exponential-risk-graph-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 12
+  by_action_class:
+    connected: 12
+  by_consequence:
+    read: 12
+  human_in_the_loop_required: 0
+operations:
+- path: /api/v1/vault/{network}/{vaultAddress}
+  method: get
+  operationId: VaultController_getVault_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/vault/pending-redeems/{network}/{vaultAddress}
+  method: get
+  operationId: VaultController_getTotalPendingRedeems_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/vault/yield/timeseries/{network}/{vaultAddress}
+  method: get
+  operationId: VaultController_getYieldTimeseries_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/vault/tvl/timeseries/{network}/{vaultAddress}
+  method: get
+  operationId: VaultController_getTvlTimeseries_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/history/user/{network}/{vaultAddress}/{userAddress}
+  method: get
+  operationId: HistoryController_getAggregatedHistory_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/vault/pending-redeems/{network}/{vaultAddress}/{userAddress}
+  method: get
+  operationId: VaultController_getPendingRedeemsForUser_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/performance/user/{network}/{vaultAddress}/{userAddress}
+  method: get
+  operationId: PerformanceController_getUserPerformance_v1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/public/vault/{chain}/{vaultAddress}/exposure
+  method: get
+  operationId: getVaultExposure
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/agent/schema
+  method: get
+  operationId: agentSchema
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/agent/search
+  method: get
+  operationId: agentSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/agent/node/{nodeId}
+  method: get
+  operationId: agentNode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/agent/dependencies
+  method: get
+  operationId: agentDependencies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

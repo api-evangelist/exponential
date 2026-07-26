@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/protocol/security-audits
+notes: >-
+  Standards conformance for the YO Protocol. yoVaults are built on the ERC-4626
+  tokenized-vault standard with ERC-7540-style async redemption; the Risk Graph
+  Agent API conforms to the x402 v2 payment standard settling via EIP-3009 over
+  USDC on Base. The protocol is not a REST-standards adopter (no OAuth2/OIDC,
+  no RFC 9457 problem+json). Third-party smart-contract audits are recorded
+  under security_audits as evidence of the protocol's security posture (not a
+  compliance certification such as SOC 2 / ISO 27001).
+standards:
+  - id: erc-4626
+    conforms: true
+    evidence: "yoVault developed following the ERC4626 tokenized-vault standard"
+  - id: erc-7540
+    conforms: true
+    evidence: "Async redemption requests (ERC-7540-style) via the YO Gateway"
+  - id: erc-3009
+    conforms: true
+    evidence: "Agent API settlement via EIP-3009 transferWithAuthorization"
+  - id: x402
+    conforms: true
+    evidence: "Agent API monetized per-call via x402 v2 (https://x402.org)"
+  - id: erc-20
+    conforms: true
+    evidence: "yoVault share tokens and YO governance token are ERC-20"
+  - id: oauth2
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+security_audits:
+  - { auditor: Offbeat Security, date: '2025-01-15', scope: yoVault }
+  - { auditor: Hunter Security, date: '2025-01-21', scope: yoVault }
+  - { auditor: Spearbit, date: '2025-05-29', scope: yoVault }
+  - { auditor: Aether Labs, date: '2025-08-20', scope: yoGateway }
+  - { auditor: Aether Labs, date: '2025-10-23', scope: yoVaultSecondary }
+  - { auditor: Paladin, date: '2025-11-21', scope: yoVaultSecondary / yoGateway }
+  - { auditor: Aetheryc, date: '2025-12-01', scope: yoVaultV2 }
+  - { auditor: Zellic, date: '2026-02-24', scope: yoVault Solana }
+  - { auditor: Accretion, date: '2026-04-13', scope: yoVault Solana }
+  - { auditor: Cantina, date: '2026-06-05', scope: Onchain Adapters }
+  - { auditor: Cantina, date: '2026-06-23', scope: Onchain Adapters }

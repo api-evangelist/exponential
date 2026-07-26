@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/yoprotocol/yo-protocol-skills/blob/main/skills/yo-protocol-cli/SKILL.md
+name: YO CLI
+binary: yo
+package: "@yo-protocol/cli"
+description: >-
+  Interactive first-party CLI for YO Protocol. Read vault state, positions,
+  balances, yield, TVL and rewards, and prepare (build calldata for) deposit,
+  redeem and approve transactions. The CLI does not sign or broadcast — its
+  `prepare` commands emit transactions for the caller to sign. Cross-chain
+  deposits and Merkl reward claims are out of CLI scope (use the HTTP API /
+  on-chain encoding).
+install:
+  - npm install -g @yo-protocol/cli
+  - npx @yo-protocol/cli
+commands:
+  read:
+    - vault
+    - vaults
+    - position
+    - portfolio
+    - history
+    - yield
+    - tvl
+    - prices
+    - share-price
+    - schema
+    - perf
+    - user-perf
+    - pending-redeems
+    - rewards
+    - yo-rewards
+    - leaderboard
+  prepare:
+    - prepare deposit
+    - prepare deposit-with-approval
+    - prepare approve
+    - prepare redeem

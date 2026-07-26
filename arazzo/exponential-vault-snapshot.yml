@@ -1,0 +1,68 @@
+arazzo: 1.0.1
+info:
+  title: YO vault snapshot and user position
+  version: 1.0.0
+  summary: Read a vault's current snapshot, yield and TVL history, and a user's pending redemptions.
+sourceDescriptions:
+  - name: protocol
+    url: ../openapi/exponential-protocol-openapi.yml
+    type: openapi
+workflows:
+  - workflowId: vaultSnapshotAndPosition
+    summary: Snapshot a yoVault and read a user's pending redemptions on it.
+    inputs:
+      type: object
+      properties:
+        network:
+          type: string
+          default: base
+        vaultAddress:
+          type: string
+        userAddress:
+          type: string
+    steps:
+      - stepId: getVault
+        operationId: VaultController_getVault_v1
+        parameters:
+          - name: network
+            in: path
+            value: $inputs.network
+          - name: vaultAddress
+            in: path
+            value: $inputs.vaultAddress
+      - stepId: getYield
+        operationId: VaultController_getYieldTimeseries_v1
+        parameters:
+          - name: network
+            in: path
+            value: $inputs.network
+          - name: vaultAddress
+            in: path
+            value: $inputs.vaultAddress
+      - stepId: getTvl
+        operationId: VaultController_getTvlTimeseries_v1
+        parameters:
+          - name: network
+            in: path
+            value: $inputs.network
+          - name: vaultAddress
+            in: path
+            value: $inputs.vaultAddress
+      - stepId: getUserPending
+        operationId: VaultController_getPendingRedeemsForUser_v1
+        parameters:
+          - name: network
+            in: path
+            value: $inputs.network
+          - name: vaultAddress
+            in: path
+            value: $inputs.vaultAddress
+          - name: userAddress
+            in: path
+            value: $inputs.userAddress
+        outputs:
+          assets: $response.body#/data/assets/formatted
+          shares: $response.body#/data/shares/formatted
+    outputs:
+      pendingAssets: $steps.getUserPending.outputs.assets
+      pendingShares: $steps.getUserPending.outputs.shares

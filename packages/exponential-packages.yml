@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.npmjs.com/org/yo-protocol
+notes: >-
+  First-party YO Protocol SDK (yo-kit), published under the @yo-protocol npm
+  scope from github.com/yo-xyz/yo-kit. Core is environment-agnostic
+  TypeScript; React ships wagmi/TanStack hooks; CLI is the `yo` interactive
+  binary. All MIT-licensed and first-party.
+packages:
+  - language: typescript
+    registry: npm
+    name: "@yo-protocol/core"
+    url: https://www.npmjs.com/package/@yo-protocol/core
+    install: npm install @yo-protocol/core viem
+    version: 1.1.0
+    license: MIT
+    repository: https://github.com/yo-xyz/yo-kit
+    description: TypeScript SDK for interacting with the YO yield protocol — client, vault reads, actions, API client, constants.
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@yo-protocol/react"
+    url: https://www.npmjs.com/package/@yo-protocol/react
+    install: npm install @yo-protocol/react @yo-protocol/core viem wagmi @tanstack/react-query
+    version: 1.0.7
+    license: MIT
+    repository: https://github.com/yo-xyz/yo-kit
+    description: React components and hooks for the YO yield protocol (YoKitProvider + wagmi/TanStack Query hooks).
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@yo-protocol/cli"
+    url: https://www.npmjs.com/package/@yo-protocol/cli
+    install: npm install -g @yo-protocol/cli
+    version: 1.0.4
+    bin: yo
+    repository: https://github.com/yo-xyz/yo-kit
+    description: Interactive CLI for YO Protocol — explore vaults, positions, rewards, prepare deposits/redeems.
+    official: true

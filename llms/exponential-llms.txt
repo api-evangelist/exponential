@@ -1,0 +1,73 @@
+# YO Protocol Documentation
+
+## YO Documentation
+
+- [What is YO?](https://docs.yo.xyz/welcome-to-yo/what-is-yo.md): Yield Optimizer 101
+- [Why should I use YO?](https://docs.yo.xyz/welcome-to-yo/why-should-i-use-yo.md): Yield optimizer 101
+- [FAQ](https://docs.yo.xyz/welcome-to-yo/faq.md)
+- [How to Deposit into YO](https://docs.yo.xyz/user-guides/how-to-deposit-into-yo.md)
+- [How to Withdraw from YO](https://docs.yo.xyz/user-guides/how-to-withdraw-from-yo.md)
+- [YO Protocol](https://docs.yo.xyz/protocol/yo-protocol.md): For more technical readers
+- [yoVault Tokens](https://docs.yo.xyz/protocol/yovault-tokens.md)
+- [Contract Addresses](https://docs.yo.xyz/protocol/contract-addresses.md): List of published contracts and protocol addresses
+- [Risks](https://docs.yo.xyz/protocol/risks.md)
+- [Insure yoUSD with OpenCover](https://docs.yo.xyz/protocol/risks/insure-yousd-with-opencover.md)
+- [Security Audits](https://docs.yo.xyz/protocol/security-audits.md)
+- [Security Framework](https://docs.yo.xyz/protocol/security-framework.md)
+- [Build with YO](https://docs.yo.xyz/integrations/build-with-yo.md): One integration. Optimized, risk-adjusted yield across chains.
+- [Integration Guides](https://docs.yo.xyz/integrations/integration-guides.md)
+- [SDK](https://docs.yo.xyz/integrations/integration-guides/sdk.md)
+- [Summary](https://docs.yo.xyz/integrations/integration-guides/sdk/summary.md)
+- [Getting Started](https://docs.yo.xyz/integrations/integration-guides/sdk/getting-started.md)
+- [Quickstart](https://docs.yo.xyz/integrations/integration-guides/sdk/getting-started/quickstart.md)
+- [Installation](https://docs.yo.xyz/integrations/integration-guides/sdk/getting-started/installation.md)
+- [Core](https://docs.yo.xyz/integrations/integration-guides/sdk/core.md)
+- [Overview](https://docs.yo.xyz/integrations/integration-guides/sdk/core/overview.md)
+- [Actions](https://docs.yo.xyz/integrations/integration-guides/sdk/core/actions.md)
+- [Types](https://docs.yo.xyz/integrations/integration-guides/sdk/core/types.md)
+- [API client](https://docs.yo.xyz/integrations/integration-guides/sdk/core/api-client.md)
+- [Vault Reads](https://docs.yo.xyz/integrations/integration-guides/sdk/core/vault-reads.md)
+- [Constants](https://docs.yo.xyz/integrations/integration-guides/sdk/core/constants.md)
+- [Client](https://docs.yo.xyz/integrations/integration-guides/sdk/core/client.md)
+- [React](https://docs.yo.xyz/integrations/integration-guides/sdk/react.md)
+- [YO Kit Provider](https://docs.yo.xyz/integrations/integration-guides/sdk/react/yo-kit-provider.md)
+- [Overview](https://docs.yo.xyz/integrations/integration-guides/sdk/react/overview.md)
+- [Provider](https://docs.yo.xyz/integrations/integration-guides/sdk/react/provider.md)
+- [Hooks](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks.md)
+- [README](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/readme.md)
+- [use vault](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-vault.md)
+- [use deposit](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-deposit.md)
+- [use pending redemptions](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-pending-redemptions.md)
+- [use user balance](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-user-balance.md)
+- [use approve](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-approve.md)
+- [use redeem](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-redeem.md)
+- [use vaults](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-vaults.md)
+- [use vault history](https://docs.yo.xyz/integrations/integration-guides/sdk/react/hooks/use-vault-history.md)
+- [Guides](https://docs.yo.xyz/integrations/integration-guides/sdk/guides.md)
+- [Error handling](https://docs.yo.xyz/integrations/integration-guides/sdk/guides/error-handling.md)
+- [Wagmi setup](https://docs.yo.xyz/integrations/integration-guides/sdk/guides/wagmi-setup.md)
+- [Examples](https://docs.yo.xyz/integrations/integration-guides/sdk/examples.md)
+- [yoGateway](https://docs.yo.xyz/integrations/integration-guides/yogateway.md)
+- [Individual Contracts](https://docs.yo.xyz/integrations/integration-guides/individual-contracts.md)
+- [AI Agents](https://docs.yo.xyz/integrations/ai-agents.md): Leverage your agentic framework to build with you in a few prompts
+- [API](https://docs.yo.xyz/integrations/api.md)
+- [Brand kit](https://docs.yo.xyz/integrations/brand-kit.md): Downloadable assets and brand guidelines.
+- [YO Risk Graph](https://docs.yo.xyz/yo-risk-graph.md)
+- [Vault Exposure API](https://docs.yo.xyz/yo-risk-graph/vault-exposure-api.md)
+- [Agent API](https://docs.yo.xyz/yo-risk-graph/agent-api.md)
+
+
+---
+
+# Agent Instructions
+This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com.
+
+## Querying This Documentation
+If you need additional information, you can query the documentation dynamically by asking a question.
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+```
+GET https://docs.yo.xyz/welcome-to-yo/what-is-yo.md?ask=<question>
+```
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

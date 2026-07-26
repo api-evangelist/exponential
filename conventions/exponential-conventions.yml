@@ -1,0 +1,52 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/integrations/api
+notes: >-
+  Cross-cutting request/response semantics across the YO Protocol API and the
+  Risk Graph Agent API. The Protocol read API is unauthenticated; the Risk
+  Graph Agent API is monetized per-call over x402. There is no idempotency-key
+  contract (all HTTP surfaces are read-only GETs; state changes happen
+  on-chain via the SDK/Gateway, not via idempotent POSTs), so no Idempotency
+  pointer is emitted.
+authentication:
+  protocol_api: none (public read)
+  vault_exposure_api: none (no API key required)
+  agent_api: x402 micropayment per call (X-PAYMENT header, USDC on Base)
+versioning:
+  scheme: uri-path
+  current: v1
+  path_prefix: /api/v1
+response_envelope:
+  shape: "{ data, message, statusCode }"
+  fields:
+    - { name: data, description: The response payload }
+    - { name: message, description: Human-readable status message (e.g. SUCCESS) }
+    - { name: statusCode, description: HTTP status code echoed in body }
+  amount_shape: "{ raw (int64 base units), formatted (decimal string) }"
+addressing:
+  network_param:
+    in: path
+    values: [base, ethereum, unichain, arbitrum, tac, plasma, hyperevm]
+  vault_and_user: EVM/contract addresses in path segments
+pagination:
+  style: limit-only
+  params: [limit]
+  applies_to: /api/v1/history/user
+payment:
+  standard: x402
+  version: v2
+  network: eip155:8453 (Base mainnet)
+  asset: "USDC 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913 (6 decimals)"
+  settlement: EIP-3009 transferWithAuthorization via Coinbase CDP (payer pays no gas)
+  invoice_header: PAYMENT-REQUIRED (base64, canonical resource.url)
+  payment_header: X-PAYMENT
+  receipt_header: PAYMENT-RESPONSE
+  free_responses: [400, 403, 404, 429, "5xx"]
+  billed_exception: /api/v1/agent/search always settles even on zero results
+rate_limiting:
+  agent_api: ~10 requests/second per payer
+cross_links:
+  errors: errors/exponential-problem-types.yml
+  lifecycle: lifecycle/exponential-lifecycle.yml
+  authentication: authentication/exponential-authentication.yml
+  finops: finops/exponential-finops.yml

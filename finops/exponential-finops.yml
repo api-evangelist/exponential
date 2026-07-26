@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.yo.xyz/yo-risk-graph/agent-api
+notes: >-
+  Pay-per-query pricing for the YO Risk Graph Agent API, settled per call via
+  x402 micropayments in USDC on Base mainnet. No subscription or onboarding
+  fee — plain pay-per-query from the first call. The Protocol read API and the
+  public Vault Exposure API are free (no key). Escalation: heavier queries may
+  re-issue a fresh 402 with a corrected amount.
+model: pay-per-call (x402)
+currency: USDC
+network: Base mainnet (eip155:8453)
+onboarding_fee: none
+free_endpoints:
+  - "GET /api/v1/vault/** (Protocol API)"
+  - "GET /api/v1/public/vault/{chain}/{vaultAddress}/exposure (Vault Exposure)"
+metered_endpoints:
+  - { endpoint: "GET /api/v1/agent/schema", price_usd: 0.001 }
+  - { endpoint: "GET /api/v1/agent/search", price_usd: 0.001, note: "always settles, even on zero results" }
+  - { endpoint: "GET /api/v1/agent/node/:nodeId", price_usd: 0.05 }
+  - { endpoint: "GET /api/v1/agent/dependencies", price_usd: 1.00 }
+reference_cost: "~$1 covers roughly 1,000 cheap (schema/search) calls"

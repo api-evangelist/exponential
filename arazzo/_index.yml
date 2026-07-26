@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/
+workflows:
+  - file: exponential-vault-snapshot.yml
+    workflowId: vaultSnapshotAndPosition
+    title: YO vault snapshot and user position
+    summary: Read a vault's snapshot, yield and TVL history, and a user's pending redemptions.
+  - file: exponential-risk-graph-triage.yml
+    workflowId: riskGraphTriage
+    title: YO Risk Graph triage
+    summary: schema -> search -> node grade -> dependencies over the x402 paid agent API.
