@@ -1,7 +1,8 @@
 generated: '2026-07-19'
 method: searched
 source: https://github.com/yoprotocol/yo-protocol-skills/tree/main/skills/yo-base-mcp-plugin
-status: plugin
+status: published
+status_raw: plugin
 notes: >-
   YO Protocol ships NO standalone hosted MCP server (stated explicitly in the
   yo-base-mcp-plugin skill). Instead it publishes an official Base MCP plugin —
