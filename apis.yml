@@ -110,6 +110,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/exponential-protocol-overlay.yaml
 - type: DomainSecurity
   url: security/exponential-domain-security.yml
 - type: AgenticAccess
