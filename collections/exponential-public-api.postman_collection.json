@@ -1,0 +1,144 @@
+{
+  "item": [
+    {
+      "id": "37a256c5-b0c8-4597-89e2-17d5da5ae077",
+      "name": "Public",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90e3a9e4-eec0-4a4f-b0f2-9e7b556af26c",
+          "name": "Current collateral exposure of a vault (underlying assets, USD value, share of allocation).",
+          "request": {
+            "name": "Current collateral exposure of a vault (underlying assets, USD value, share of allocation).",
+            "description": {
+              "content": "No API key required. Works with most Morpho vaults today.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "public",
+                "vault",
+                ":chain",
+                ":vaultAddress",
+                "exposure"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) Chain slug, e.g. ethereum"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7281a76c-6b80-4be0-ab15-579005b87fe1",
+              "name": "Vault exposure breakdown",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "public",
+                    "vault",
+                    ":chain",
+                    ":vaultAddress",
+                    "exposure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) Chain slug, e.g. ethereum"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"vault\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"tvlUsd\": \"string\"\n    },\n    \"allocatedUsd\": \"string\",\n    \"underlying\": [\n      {\n        \"assetId\": \"string\",\n        \"symbol\": \"string\",\n        \"chain\": \"string\",\n        \"exposureUsd\": \"string\",\n        \"exposurePct\": \"string\"\n      },\n      {\n        \"assetId\": \"string\",\n        \"symbol\": \"string\",\n        \"chain\": \"string\",\n        \"exposureUsd\": \"string\",\n        \"exposurePct\": \"string\"\n      }\n    ],\n    \"collateral\": [\n      {\n        \"assetId\": \"string\",\n        \"symbol\": \"string\",\n        \"chain\": \"string\",\n        \"exposureUsd\": \"string\",\n        \"exposurePct\": \"string\"\n      },\n      {\n        \"assetId\": \"string\",\n        \"symbol\": \"string\",\n        \"chain\": \"string\",\n        \"exposureUsd\": \"string\",\n        \"exposurePct\": \"string\"\n      }\n    ],\n    \"uncollateralizedUsd\": \"string\",\n    \"uncollateralizedPct\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 6413.329371009399\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.yo.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "213e86a1-1012-403d-b356-aed5fa034938",
+    "name": "Yo Protocol Agent Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read API for the YO Protocol (by Exponential.fi). Fetch historical and current protocol- and address-level data for yoVaults: current snapshot (TVL, yield, underlying pools, allocation), pending redeem requests, historical yield and TVL time series, per-user deposit/withdraw history, per-user pending redemptions, and per-user P&L. No API key required. Endpoints are assembled verbatim from the per-endpoint OpenAPI fragments published on the docs API reference page.",
+      "type": "text/plain"
+    }
+  }
+}

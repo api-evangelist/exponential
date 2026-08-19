@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yo Protocol Agent History API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch the historical deposits and withdrawals of a specific address for a specific YO vault on a specific blockchain.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/history/user/:network/:vaultAddress/:userAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the historical deposits and withdrawals of a specific address for a specific YO vault on a specific blockchain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

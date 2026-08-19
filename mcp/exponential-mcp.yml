@@ -3,14 +3,12 @@ method: searched
 source: https://github.com/yoprotocol/yo-protocol-skills/tree/main/skills/yo-base-mcp-plugin
 status: published
 status_raw: plugin
-notes: >-
-  YO Protocol ships NO standalone hosted MCP server (stated explicitly in the
-  yo-base-mcp-plugin skill). Instead it publishes an official Base MCP plugin —
-  a packaged skill that rides on top of the Base MCP server to view vaults,
-  check positions/balances/rewards, deposit, request instant/async redeems,
-  and claim Merkl rewards via Base MCP's send_calls. Chat-only harnesses fall
-  back to the YO HTTP API + on-chain encoding. The tool list below is derived
-  from the plugin's documented flows and the public Protocol API operations.
+notes: YO Protocol ships NO standalone hosted MCP server (stated explicitly in the yo-base-mcp-plugin
+  skill). Instead it publishes an official Base MCP plugin — a packaged skill that rides on top of the
+  Base MCP server to view vaults, check positions/balances/rewards, deposit, request instant/async redeems,
+  and claim Merkl rewards via Base MCP's send_calls. Chat-only harnesses fall back to the YO HTTP API
+  + on-chain encoding. The tool list below is derived from the plugin's documented flows and the public
+  Protocol API operations.
 server:
   name: yo-base-mcp-plugin
   kind: base-mcp-plugin
@@ -18,21 +16,28 @@ server:
   host: none
   hosted: false
 tools:
-  - name: list_vaults
-    description: List YO vaults and current state
-    source_operation: openapi/exponential-protocol-openapi.yml#VaultController_getVault_v1
-  - name: get_position
-    description: Check a user's position, balance and rewards in a vault
-    source_operation: openapi/exponential-protocol-openapi.yml#HistoryController_getAggregatedHistory_v1
-  - name: get_pending_redeems
-    description: Check pending redeem requests for a user or vault
-    source_operation: openapi/exponential-protocol-openapi.yml#VaultController_getPendingRedeemsForUser_v1
-  - name: deposit
-    description: Deposit into a yoVault via the YO Gateway (routes through /transactions/zapIn or CLI prepare deposit)
-    source: https://docs.yo.xyz/integrations/integration-guides/sdk/core/actions
-  - name: request_redeem
-    description: Request an instant or async redeem via the YO Gateway
-    source: https://docs.yo.xyz/integrations/integration-guides/sdk/core/actions
-  - name: claim_rewards
-    description: Claim Merkl rewards via direct ABI encoding on the Merkl Distributor
-    source: https://docs.yo.xyz/integrations/ai-agents
+- name: list_vaults
+  description: List YO vaults and current state
+  source_operation: openapi/exponential-protocol-openapi.yml#VaultController_getVault_v1
+- name: get_position
+  description: Check a user's position, balance and rewards in a vault
+  source_operation: openapi/exponential-protocol-openapi.yml#HistoryController_getAggregatedHistory_v1
+- name: get_pending_redeems
+  description: Check pending redeem requests for a user or vault
+  source_operation: openapi/exponential-protocol-openapi.yml#VaultController_getPendingRedeemsForUser_v1
+- name: deposit
+  description: Deposit into a yoVault via the YO Gateway (routes through /transactions/zapIn or CLI prepare
+    deposit)
+  source: https://docs.yo.xyz/integrations/integration-guides/sdk/core/actions
+- name: request_redeem
+  description: Request an instant or async redeem via the YO Gateway
+  source: https://docs.yo.xyz/integrations/integration-guides/sdk/core/actions
+- name: claim_rewards
+  description: Claim Merkl rewards via direct ABI encoding on the Merkl Distributor
+  source: https://docs.yo.xyz/integrations/ai-agents
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

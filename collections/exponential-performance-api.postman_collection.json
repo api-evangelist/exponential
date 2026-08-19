@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "c61431c6-2de0-431f-9194-e8265c0854c5",
+      "name": "Performance",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4711976-90c9-4f50-96d4-71d1b92b41ae",
+          "name": "Fetch the P&L of a user in a specific vault.",
+          "request": {
+            "name": "Fetch the P&L of a user in a specific vault.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "performance",
+                "user",
+                ":network",
+                ":vaultAddress",
+                ":userAddress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userAddress",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e3b9ef8-7170-4014-9456-898669d31f18",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "performance",
+                    "user",
+                    ":network",
+                    ":vaultAddress",
+                    ":userAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userAddress",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.yo.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1473f391-b38d-4e03-88d6-b9e637e4d037",
+    "name": "Yo Protocol Agent Performance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public read API for the YO Protocol (by Exponential.fi). Fetch historical and current protocol- and address-level data for yoVaults: current snapshot (TVL, yield, underlying pools, allocation), pending redeem requests, historical yield and TVL time series, per-user deposit/withdraw history, per-user pending redemptions, and per-user P&L. No API key required. Endpoints are assembled verbatim from the per-endpoint OpenAPI fragments published on the docs API reference page.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yo Protocol Agent Vault API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vault",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a snapshot of the current TVL, yield, underlying pools and allocation of a protocol vault.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/vault/:network/:vaultAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a snapshot of the current TVL, yield, underlying pools and allocation of a protocol vault."
+        },
+        {
+          "info": {
+            "name": "Check the status of pending redeem requests for a given YO vault on a given blockchain.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/vault/pending-redeems/:network/:vaultAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Check the status of pending redeem requests for a given YO vault on a given blockchain."
+        },
+        {
+          "info": {
+            "name": "Fetch the historical yield of a specific YO vault.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/vault/yield/timeseries/:network/:vaultAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the historical yield of a specific YO vault."
+        },
+        {
+          "info": {
+            "name": "Fetch the historical TVL of a specific YO vault.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/vault/tvl/timeseries/:network/:vaultAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the historical TVL of a specific YO vault."
+        },
+        {
+          "info": {
+            "name": "Fetch the pending redemptions for a specific user on a specific vault.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/vault/pending-redeems/:network/:vaultAddress/:userAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the pending redemptions for a specific user on a specific vault."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yo Protocol Agent Public API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Public",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current collateral exposure of a vault (underlying assets, USD value, share of allocation).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/public/vault/:chain/:vaultAddress/exposure",
+            "params": [
+              {
+                "name": "chain",
+                "value": "",
+                "type": "path",
+                "description": "Chain slug, e.g. ethereum"
+              },
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              }
+            ]
+          },
+          "docs": "No API key required. Works with most Morpho vaults today."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

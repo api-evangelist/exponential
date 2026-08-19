@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yo Protocol Agent API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Data model — node types, edge types, grade letters. Call this first.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/agent/schema"
+          },
+          "docs": "Data model — node types, edge types, grade letters. Call this first."
+        },
+        {
+          "info": {
+            "name": "Search pools/assets/protocols/chains. Lean teaser per hit (no grade). Capped at 10 results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/agent/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Asset address or protocol/asset name. No wildcards."
+              },
+              {
+                "name": "label",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to Pool, Asset, Protocol, or Chain"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "1-10, default 10"
+              },
+              {
+                "name": "tvl",
+                "value": "",
+                "type": "query",
+                "description": "Comparator, e.g. \">1000000\""
+              },
+              {
+                "name": "grade",
+                "value": "",
+                "type": "query",
+                "description": "Comparator over A-F, e.g. \"<=B\""
+              }
+            ]
+          },
+          "docs": "Always settles, even on a zero-result query, since the scan itself is the billable work."
+        },
+        {
+          "info": {
+            "name": "Full properties + grade (_riskTier) + riskBreakdown (rationale as Q&A pairs).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/agent/node/:nodeId",
+            "params": [
+              {
+                "name": "nodeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Full properties + grade (_riskTier) + riskBreakdown (rationale as Q&A pairs)."
+        },
+        {
+          "info": {
+            "name": "A pool's direct (1-hop) dependencies — edges and neighboring nodes, each stamped with lastUpdatedAt.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/agent/dependencies",
+            "params": [
+              {
+                "name": "nodeId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "A pool's direct (1-hop) dependencies — edges and neighboring nodes, each stamped with lastUpdatedAt."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

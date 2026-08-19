@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yo Protocol Agent Performance API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Performance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch the P&L of a user in a specific vault.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.yo.xyz/api/v1/performance/user/:network/:vaultAddress/:userAddress",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the P&L of a user in a specific vault."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
