@@ -42,6 +42,22 @@ tags:
 - Decentralized Finance
 - Yield
 - Yield Optimizer
+- Vault
+- ERC-4626
+- Cross-Chain
+- Blockchain
+- Crypto
+- Risk
+- Risk Ratings
+- Agents
+- x402
+- Web3
+tags_raw:
+- Company
+- DeFi
+- Decentralized Finance
+- Yield
+- Yield Optimizer
 - Vaults
 - ERC-4626
 - Cross-chain
@@ -60,6 +76,8 @@ apis:
   humanURL: https://docs.yo.xyz/integrations/api
   baseURL: https://api.yo.xyz
   tags:
+  - Agents
+  tags_raw:
   - Agent
   properties:
   - type: OpenAPI
