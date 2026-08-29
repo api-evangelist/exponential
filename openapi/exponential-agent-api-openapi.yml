@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Yo Protocol Agent API
+  title: YO Risk Graph Agent API
   version: '1.0'
-  description: 'Public read API for the YO Protocol (by Exponential.fi). Fetch historical and current protocol- and address-level data for yoVaults: current snapshot (TVL, yield, underlying pools, allocation), pending redeem requests, historical yield and TVL time series, per-user deposit/withdraw history, per-user pending redemptions, and per-user P&L. No API key required. Endpoints are assembled verbatim from the per-endpoint OpenAPI fragments published on the docs API reference page.'
+  description: 'The YO Risk Graph (Exponential.fi Risk Ratings) exposed as HTTP APIs. Two surfaces: a free public Vault Exposure endpoint that returns a vault''s current collateral exposure, and a paid Agent API for full risk grading and dependency mapping across pools, assets, protocols and chains. The Agent API is monetized per-call via the x402 micropayment standard (v2) in USDC on Base mainnet (EIP-3009 transferWithAuthorization via Coinbase CDP; payer pays no gas). Paths and parameters are captured from the published docs; per-call prices are recorded as x-x402-price extensions.'
 servers:
-- url: https://api.yo.xyz
+- url: https://risk.yo.xyz
   description: Production
 tags:
 - name: Agent

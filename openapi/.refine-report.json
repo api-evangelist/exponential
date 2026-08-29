@@ -1,22 +1,29 @@
 {
   "provider": "exponential",
   "sources": [
-    "exponential-agent-api-openapi.yml",
-    "exponential-history-api-openapi.yml",
-    "exponential-performance-api-openapi.yml",
-    "exponential-public-api-openapi.yml",
-    "exponential-vault-api-openapi.yml"
+    "_original/exponential-protocol-openapi.yml",
+    "_original/exponential-risk-graph-openapi.yml"
   ],
   "outputs": [
-    "exponential-agent-api-openapi.yml",
     "exponential-history-api-openapi.yml",
     "exponential-performance-api-openapi.yml",
-    "exponential-public-api-openapi.yml",
-    "exponential-vault-api-openapi.yml"
+    "exponential-vault-api-openapi.yml",
+    "exponential-agent-api-openapi.yml",
+    "exponential-public-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "exponential-protocol-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "exponential-risk-graph-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "exponential-agent-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "exponential-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "exponential-performance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "exponential-public-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "exponential-vault-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
