@@ -43,6 +43,7 @@ accessModel:
   confidence: low
   source:
   - authentication
+  - {url: 'https://exponential.fi', status: 308, note: 'declared website redirects to https://yo.xyz/risk — a different registrable domain (exponential.fi -> yo.xyz), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
   generated: '2026-07-22'
   method: derived
 specificationVersion: '0.23'
