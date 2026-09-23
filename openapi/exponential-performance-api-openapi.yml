@@ -12,7 +12,7 @@ paths:
   /api/v1/performance/user/{network}/{vaultAddress}/{userAddress}:
     get:
       operationId: PerformanceController_getUserPerformance_v1
-      summary: Fetch the P&L of a user in a specific vault.
+      summary: Fetch the P&L of a user in a specific vault
       tags:
       - Performance
       parameters:

@@ -12,7 +12,7 @@ paths:
   /api/v1/history/user/{network}/{vaultAddress}/{userAddress}:
     get:
       operationId: HistoryController_getAggregatedHistory_v1
-      summary: Fetch the historical deposits and withdrawals of a specific address for a specific YO vault on a specific blockchain.
+      summary: Fetch the historical deposits and withdrawals of a specific address for a…
       tags:
       - History
       parameters:

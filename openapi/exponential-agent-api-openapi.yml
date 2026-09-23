@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: YO Risk Graph Agent API
   version: '1.0'
-  description: 'The YO Risk Graph (Exponential.fi Risk Ratings) exposed as HTTP APIs. Two surfaces: a free public Vault Exposure endpoint that returns a vault''s current collateral exposure, and a paid Agent API for full risk grading and dependency mapping across pools, assets, protocols and chains. The Agent API is monetized per-call via the x402 micropayment standard (v2) in USDC on Base mainnet (EIP-3009 transferWithAuthorization via Coinbase CDP; payer pays no gas). Paths and parameters are captured from the published docs; per-call prices are recorded as x-x402-price extensions.'
+  description: The YO Risk Graph (Exponential.fi Risk Ratings) exposed as HTTP APIs.
 servers:
 - url: https://risk.yo.xyz
   description: Production
@@ -12,7 +12,7 @@ paths:
   /api/v1/agent/schema:
     get:
       operationId: agentSchema
-      summary: Data model — node types, edge types, grade letters. Call this first.
+      summary: Data model — node types, edge types, grade letters. Call this first
       tags:
       - Agent
       x-x402-price: $0.001
@@ -24,7 +24,7 @@ paths:
   /api/v1/agent/search:
     get:
       operationId: agentSearch
-      summary: Search pools/assets/protocols/chains. Lean teaser per hit (no grade). Capped at 10 results.
+      summary: Search pools/assets/protocols/chains.
       description: Always settles, even on a zero-result query, since the scan itself is the billable work.
       tags:
       - Agent
@@ -76,7 +76,7 @@ paths:
   /api/v1/agent/node/{nodeId}:
     get:
       operationId: agentNode
-      summary: Full properties + grade (_riskTier) + riskBreakdown (rationale as Q&A pairs).
+      summary: Full properties + grade (_riskTier) + riskBreakdown (rationale as Q&A pairs)
       tags:
       - Agent
       x-x402-price: $0.05
@@ -96,7 +96,7 @@ paths:
   /api/v1/agent/dependencies:
     get:
       operationId: agentDependencies
-      summary: A pool's direct (1-hop) dependencies — edges and neighboring nodes, each stamped with lastUpdatedAt.
+      summary: A pool's direct (1-hop) dependencies — edges and neighboring nodes, each…
       tags:
       - Agent
       x-x402-price: $1.00

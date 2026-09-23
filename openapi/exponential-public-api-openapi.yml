@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: YO Risk Graph Public API
   version: '1.0'
-  description: 'The YO Risk Graph (Exponential.fi Risk Ratings) exposed as HTTP APIs. Two surfaces: a free public Vault Exposure endpoint that returns a vault''s current collateral exposure, and a paid Agent API for full risk grading and dependency mapping across pools, assets, protocols and chains. The Agent API is monetized per-call via the x402 micropayment standard (v2) in USDC on Base mainnet (EIP-3009 transferWithAuthorization via Coinbase CDP; payer pays no gas). Paths and parameters are captured from the published docs; per-call prices are recorded as x-x402-price extensions.'
+  description: The YO Risk Graph (Exponential.fi Risk Ratings) exposed as HTTP APIs.
 servers:
 - url: https://risk.yo.xyz
   description: Production
@@ -12,7 +12,7 @@ paths:
   /api/v1/public/vault/{chain}/{vaultAddress}/exposure:
     get:
       operationId: getVaultExposure
-      summary: Current collateral exposure of a vault (underlying assets, USD value, share of allocation).
+      summary: Current collateral exposure of a vault (underlying assets, USD value, share of…
       description: No API key required. Works with most Morpho vaults today.
       tags:
       - Public
@@ -38,19 +38,6 @@ paths:
                 $ref: '#/components/schemas/VaultExposureResponse'
 components:
   schemas:
-    ExposureEntry:
-      type: object
-      properties:
-        assetId:
-          type: string
-        symbol:
-          type: string
-        chain:
-          type: string
-        exposureUsd:
-          type: string
-        exposurePct:
-          type: string
     VaultExposureResponse:
       type: object
       properties:
@@ -84,3 +71,16 @@ components:
           type: string
         statusCode:
           type: number
+    ExposureEntry:
+      type: object
+      properties:
+        assetId:
+          type: string
+        symbol:
+          type: string
+        chain:
+          type: string
+        exposureUsd:
+          type: string
+        exposurePct:
+          type: string

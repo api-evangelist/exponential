@@ -12,7 +12,7 @@ paths:
   /api/v1/vault/{network}/{vaultAddress}:
     get:
       operationId: VaultController_getVault_v1
-      summary: Get a snapshot of the current TVL, yield, underlying pools and allocation of a protocol vault.
+      summary: Get a snapshot of the current TVL, yield, underlying pools and allocation of a…
       tags:
       - Vault
       parameters:
@@ -40,7 +40,7 @@ paths:
   /api/v1/vault/pending-redeems/{network}/{vaultAddress}:
     get:
       operationId: VaultController_getTotalPendingRedeems_v1
-      summary: Check the status of pending redeem requests for a given YO vault on a given blockchain.
+      summary: Check the status of pending redeem requests for a given YO vault on a given…
       tags:
       - Vault
       parameters:
@@ -76,7 +76,7 @@ paths:
   /api/v1/vault/yield/timeseries/{network}/{vaultAddress}:
     get:
       operationId: VaultController_getYieldTimeseries_v1
-      summary: Fetch the historical yield of a specific YO vault.
+      summary: Fetch the historical yield of a specific YO vault
       tags:
       - Vault
       parameters:
@@ -104,7 +104,7 @@ paths:
   /api/v1/vault/tvl/timeseries/{network}/{vaultAddress}:
     get:
       operationId: VaultController_getTvlTimeseries_v1
-      summary: Fetch the historical TVL of a specific YO vault.
+      summary: Fetch the historical TVL of a specific YO vault
       tags:
       - Vault
       parameters:
@@ -132,7 +132,7 @@ paths:
   /api/v1/vault/pending-redeems/{network}/{vaultAddress}/{userAddress}:
     get:
       operationId: VaultController_getPendingRedeemsForUser_v1
-      summary: Fetch the pending redemptions for a specific user on a specific vault.
+      summary: Fetch the pending redemptions for a specific user on a specific vault
       tags:
       - Vault
       parameters:
@@ -172,17 +172,6 @@ paths:
                       $ref: '#/components/schemas/PendingRedeemsForUserResponseDto'
 components:
   schemas:
-    AmountDto:
-      type: object
-      properties:
-        raw:
-          format: int64
-          type: integer
-        formatted:
-          type: string
-      required:
-      - raw
-      - formatted
     ApiResponseDto:
       type: object
       properties:
@@ -199,6 +188,17 @@ components:
       - data
       - message
       - statusCode
+    AmountDto:
+      type: object
+      properties:
+        raw:
+          format: int64
+          type: integer
+        formatted:
+          type: string
+      required:
+      - raw
+      - formatted
     PendingRedeemsForUserResponseDto:
       type: object
       properties:
