@@ -60,7 +60,7 @@ tags:
 - Cross-Chain
 - Blockchain
 - Crypto
-- Risk
+- Risk Management
 - Risk Ratings
 - Agents
 - x402
@@ -206,3 +206,10 @@ x-enrichment:
   status: backfilled
   pass: local-v1
   note: backfilled from .gitignore signal + verified work evidence
+x-x402:
+  verified: true
+  probed: '2026-09-24'
+  url: "https://risk.yo.xyz/api/v1/agent/schema"
+  evidence:
+  - "header:payment-required"
+  control: 404
