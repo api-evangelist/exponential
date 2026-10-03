@@ -172,27 +172,6 @@ paths:
                       $ref: '#/components/schemas/PendingRedeemsForUserResponseDto'
 components:
   schemas:
-    PendingRedeemsForUserResponseDto:
-      type: object
-      properties:
-        assets:
-          $ref: '#/components/schemas/AmountDto'
-        shares:
-          $ref: '#/components/schemas/AmountDto'
-      required:
-      - assets
-      - shares
-    AmountDto:
-      type: object
-      properties:
-        raw:
-          format: int64
-          type: integer
-        formatted:
-          type: string
-      required:
-      - raw
-      - formatted
     ApiResponseDto:
       type: object
       properties:
@@ -209,3 +188,24 @@ components:
       - data
       - message
       - statusCode
+    AmountDto:
+      type: object
+      properties:
+        raw:
+          format: int64
+          type: integer
+        formatted:
+          type: string
+      required:
+      - raw
+      - formatted
+    PendingRedeemsForUserResponseDto:
+      type: object
+      properties:
+        assets:
+          $ref: '#/components/schemas/AmountDto'
+        shares:
+          $ref: '#/components/schemas/AmountDto'
+      required:
+      - assets
+      - shares
