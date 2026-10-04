@@ -172,6 +172,16 @@ paths:
                       $ref: '#/components/schemas/PendingRedeemsForUserResponseDto'
 components:
   schemas:
+    PendingRedeemsForUserResponseDto:
+      type: object
+      properties:
+        assets:
+          $ref: '#/components/schemas/AmountDto'
+        shares:
+          $ref: '#/components/schemas/AmountDto'
+      required:
+      - assets
+      - shares
     ApiResponseDto:
       type: object
       properties:
@@ -199,13 +209,3 @@ components:
       required:
       - raw
       - formatted
-    PendingRedeemsForUserResponseDto:
-      type: object
-      properties:
-        assets:
-          $ref: '#/components/schemas/AmountDto'
-        shares:
-          $ref: '#/components/schemas/AmountDto'
-      required:
-      - assets
-      - shares
