@@ -182,6 +182,17 @@ components:
       required:
       - assets
       - shares
+    AmountDto:
+      type: object
+      properties:
+        raw:
+          format: int64
+          type: integer
+        formatted:
+          type: string
+      required:
+      - raw
+      - formatted
     ApiResponseDto:
       type: object
       properties:
@@ -198,14 +209,3 @@ components:
       - data
       - message
       - statusCode
-    AmountDto:
-      type: object
-      properties:
-        raw:
-          format: int64
-          type: integer
-        formatted:
-          type: string
-      required:
-      - raw
-      - formatted

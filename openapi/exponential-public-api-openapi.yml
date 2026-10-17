@@ -38,19 +38,6 @@ paths:
                 $ref: '#/components/schemas/VaultExposureResponse'
 components:
   schemas:
-    ExposureEntry:
-      type: object
-      properties:
-        assetId:
-          type: string
-        symbol:
-          type: string
-        chain:
-          type: string
-        exposureUsd:
-          type: string
-        exposurePct:
-          type: string
     VaultExposureResponse:
       type: object
       properties:
@@ -84,3 +71,16 @@ components:
           type: string
         statusCode:
           type: number
+    ExposureEntry:
+      type: object
+      properties:
+        assetId:
+          type: string
+        symbol:
+          type: string
+        chain:
+          type: string
+        exposureUsd:
+          type: string
+        exposurePct:
+          type: string
