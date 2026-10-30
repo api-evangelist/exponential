@@ -64,13 +64,136 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Exponential.fi is a DeFi company (backed by Paradigm and Norwest Venture Partners) behind **YO Protocol** — a cross-chain "Yield Optimizer" that automatically allocates deposits across the best-performing liquidity pools on multiple blockchains for the highest risk-adjusted yield, using Exponential.fi's own Risk Ratings. yoVaults are ERC-4626 tokenized vaults (yoUSD, yoETH, yoBTC, yoEUR, yoGOLD, yoSOL and more) with ERC-7540-style async redemption routed through the yoGateway.
+Exponential.fi is a DeFi company (backed by Paradigm and Norwest Venture Partners) behind YO Protocol — a cross-chain "Yield Optimizer" that automatically allocates deposits across the best-performing liquidity pools on multiple blockchains to deliver the highest risk-adjusted yield, using Exponential.fi's own Risk Ratings to balance risk and reward. yoVaults are ERC-4626 tokenized vaults (yoUSD, yoETH, yoBTC, yoEUR, yoGOLD, yoSOL and more) with ERC-7540-style async redemption, all routed through the single yoGateway entry point. The developer surface spans a public read API (api.yo.xyz), a first-party TypeScript SDK/React kit/CLI (@yo-protocol/*), official agent skills and a Base MCP plugin, and the YO Risk Graph — a paid, agent-facing DeFi risk-intelligence API monetized per-call via the x402 USDC micropayment standard on Base.
 
-- Website: https://exponential.fi (redirects to https://yo.xyz)
-- Docs: https://docs.yo.xyz
-- Protocol read API: https://api.yo.xyz (`/api/v1`)
-- Risk Graph Agent API: https://risk.yo.xyz (`/api/v1/agent/*`, paid per-call via x402)
-- SDK / React / CLI: `@yo-protocol/core`, `@yo-protocol/react`, `@yo-protocol/cli` (github.com/yo-xyz/yo-kit)
-- Agent skills + Base MCP plugin: github.com/yoprotocol/yo-protocol-skills
+**Areas:** Company · DeFi · Decentralized Finance · Yield · Yield Optimizer · Vault · ERC-4626 · Cross-Chain · Blockchain · Cryptocurrency · Risk Management · Risk Ratings
 
-Backed by: norwest-venture-partners, paradigm
+## Exponential on APIs.io
+
+Everything profiled for Exponential is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/exponential/](https://apis.io/providers/exponential/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [Exponential Agent API](https://apis.io/apis/exponential/exponential-agent-api/) — The Agent API from Exponential — 4 operation(s) for agent.
+- [Exponential History API](https://apis.io/apis/exponential/exponential-history-api/) — The History API from Exponential — 1 operation(s) for history.
+- [Exponential Performance API](https://apis.io/apis/exponential/exponential-performance-api/) — The Performance API from Exponential — 1 operation(s) for performance.
+- [Exponential Public API](https://apis.io/apis/exponential/exponential-public-api/) — The Public API from Exponential — 1 operation(s) for public.
+- [Exponential Vault API](https://apis.io/apis/exponential/exponential-vault-api/) — The Vault API from Exponential — 5 operation(s) for vault.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (2)
+
+Multi-step workflows that chain operations into a business task.
+
+- [YO Risk Graph triage](https://apis.io/arazzos/exponential/exponential-risk-graph-triage/)
+- [YO vault snapshot and user position](https://apis.io/arazzos/exponential/exponential-vault-snapshot/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [yo-base-mcp-plugin](https://apis.io/servers/exponential/yo-base-mcp-plugin/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Exponential Agentic Access](https://apis.io/agentic-access/exponential/exponential-agentic-access/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Yo Protocol Agent API](https://apis.io/collections/exponential/open-exponential-agent-api/)
+- [Yo Protocol Agent History API](https://apis.io/collections/exponential/open-exponential-history-api/)
+- [Yo Protocol Agent Performance API](https://apis.io/collections/exponential/open-exponential-performance-api/)
+- [Yo Protocol Agent Public API](https://apis.io/collections/exponential/open-exponential-public-api/)
+- [Yo Protocol Agent Vault API](https://apis.io/collections/exponential/open-exponential-vault-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Exponential Protocol Overlay](https://apis.io/overlays/exponential/exponential-protocol-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Exponential Authentication](https://apis.io/security/exponential/exponential-authentication/)
+- [Exponential Domain Security](https://apis.io/security/exponential/exponential-domain-security/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Exponential Finops](https://apis.io/finops/exponential/exponential-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://exponential.fi)
+- [Documentation](https://docs.yo.xyz)
+- [Getting started](https://docs.yo.xyz/integrations/integration-guides/sdk/getting-started/quickstart)
+- [API reference](https://docs.yo.xyz/integrations/api)
+- [Pricing](https://docs.yo.xyz/yo-risk-graph/agent-api)
+- [Blog](https://docs.yo.xyz/welcome-to-yo/what-is-yo)
+- [Security](https://docs.yo.xyz/protocol/security-framework)
+- [GitHub](https://github.com/yoprotocol)
+
+## API Evangelist rating
+
+**Kin Score 37.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 38.6 |
+| Contract governance | 18.2 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 73.8 |
+| Access clarity | 10.5 |
+
+**Agent readiness 31.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/exponential/](https://apis.io/providers/exponential/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Exponential: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/exponential/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
